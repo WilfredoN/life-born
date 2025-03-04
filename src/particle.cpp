@@ -1,4 +1,5 @@
 #include <entity.h>
+#include <event_handler.h>
 #include <iostream>
 
 Particle::Particle(Vector2 position,
@@ -106,6 +107,8 @@ Singularity::Singularity(Vector2 position,
 
 void Singularity::Update(float deltaTime) {
     (void)deltaTime;
+    float rotation = 0.0f;
+    SingularityResize(*this, rotation);
 }
 
 void Singularity::Draw() const {

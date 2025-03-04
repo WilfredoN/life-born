@@ -13,13 +13,20 @@ int main() {
                             1000.0f,
                             0.0f,
                             100.0f,
-                            VIOLET,
+                            WHITE,
                             50.0f,
                             10.0f,
                             75.0f,
                             0.5f);
 
+    float rotationTime = 0.0f;
+    float pulseSpeed = 1.5f;
+
     while (!WindowShouldClose()) {
+        float deltaTime = GetFrameTime();
+        rotationTime += deltaTime * pulseSpeed;
+        SingularityResize(singularity, rotationTime);
+
         BeginDrawing();
 
         ClearBackground(BLACK);
