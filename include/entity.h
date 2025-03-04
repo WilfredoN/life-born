@@ -1,5 +1,7 @@
 #pragma once
 
+#define PULSE_SPEED 1.5f
+
 #include "raylib.h"
 
 class Particle {
@@ -157,7 +159,8 @@ class Singularity : public CelestialBody {
                 float radius,
                 float gravity,
                 float eventHorizonRadius,
-                float spin);
+                float spin,
+                bool isActive);
 
     void Update(float deltaTime) override;
 
@@ -175,7 +178,14 @@ class Singularity : public CelestialBody {
     void SetSpin(float newSpin) {
         spin = newSpin;
     }
+    bool GetIsActive() const {
+        return isActive;
+    }
+    void SetIsActive(bool newIsActive) {
+        isActive = newIsActive;
+    }
   private:
     float eventHorizonRadius;
     float spin;
+    bool isActive;
 };

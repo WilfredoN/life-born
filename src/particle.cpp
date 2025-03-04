@@ -100,9 +100,10 @@ Singularity::Singularity(Vector2 position,
                          float radius,
                          float gravity,
                          float eventHorizonRadius,
-                         float spin) :
+                         float spin,
+                         bool isActive) :
     CelestialBody(position, mass, speed, temperature, color, radius, gravity),
-    eventHorizonRadius(eventHorizonRadius), spin(spin) {
+    eventHorizonRadius(eventHorizonRadius), spin(spin), isActive(isActive) {
 }
 
 void Singularity::Update(float deltaTime) {

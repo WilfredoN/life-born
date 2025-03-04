@@ -1,6 +1,7 @@
 #include "raylib.h"
 #include <entity.h>
 #include <event_handler.h>
+#include <render.h>
 
 int main() {
     SetConfigFlags(FLAG_VSYNC_HINT | FLAG_WINDOW_HIGHDPI);
@@ -17,27 +18,21 @@ int main() {
                             50.0f,
                             10.0f,
                             75.0f,
-                            0.5f);
-
-    float rotationTime = 0.0f;
-    float pulseSpeed = 1.5f;
+                            0.5f,
+                            true);
 
     while (!WindowShouldClose()) {
         float deltaTime = GetFrameTime();
-        rotationTime += deltaTime * pulseSpeed;
-        SingularityResize(singularity, rotationTime);
+
+        if (singularity.GetIsActive()) {
+            renderSingularity(singularity);
+        }
 
         BeginDrawing();
-
         ClearBackground(BLACK);
 
-        singularity.Update(GetFrameTime());
-        singularity.Draw();
-
-        Vector2 mousePosition = GetMousePosition();
-        // Big Bang!
-        if (SingularityMouseLeftButtonPressed(mousePosition, singularity)) {
-            singularity.SetPosition(Vector2({0, 0}));
+        if (singularity.GetIsActive()) {
+            singularity.Draw();
         }
 
         EndDrawing();
