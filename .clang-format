@@ -1,0 +1,49 @@
+---
+Language:        Cpp
+IndentWidth:     4
+TabWidth:        4
+UseTab:          Never
+AllowShortIfStatementsOnASingleLine: false
+AllowShortBlocksOnASingleLine: false
+AllowShortFunctionsOnASingleLine: None
+BreakBeforeBraces: Custom
+BraceWrapping:
+  AfterEnum:      true
+  AfterStruct:    true
+  BeforeElse:     true
+  SplitEmptyFunction: false
+  SplitEmptyRecord: false
+  SplitEmptyNamespace: false
+SpaceBeforeParens: ControlStatements
+SpacesInParentheses: false
+SpacesInSquareBrackets: false
+SpaceBeforeAssignmentOperators: true
+IndentCaseLabels: true
+AlignEscapedNewlines: Left
+AlignOperands:   true
+AlignTrailingComments: true
+AlwaysBreakAfterReturnType: None
+AlwaysBreakBeforeMultilineStrings: false
+BinPackArguments: false
+BinPackParameters: false
+ContinuationIndentWidth: 4
+ConstructorInitializerIndentWidth: 4
+SpacesInContainerLiterals: false
+SpacesInAngles:  false
+PointerAlignment: Right
+AllowAllArgumentsOnNextLine: false
+AllowAllParametersOfDeclarationOnNextLine: false
+ColumnLimit:     80
+BreakConstructorInitializers: AfterColon
+BreakInheritanceList: BeforeColon
+SortIncludes:    false
+SortUsingDeclarations: true
+PenaltyBreakComment: 300
+PenaltyBreakFirstLessLess: 1000
+PenaltyBreakString: 1000
+PenaltyExcessCharacter: 1000000
+PenaltyReturnTypeOnItsOwnLine: 1000000
+EmptyLineBeforeAccessModifier: Never
+Cpp11BracedListStyle: true
+IncludeBlocks:   Preserve
+BreakBeforeBinaryOperators: None
