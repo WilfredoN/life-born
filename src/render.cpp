@@ -1,6 +1,7 @@
 #include <render.h>
 
 static float size = 0.0f;
+std::vector<Dust> dusts;
 
 void renderSingularity(Singularity &singularity) {
     float deltaTime = GetFrameTime();
@@ -10,5 +11,10 @@ void renderSingularity(Singularity &singularity) {
     if (!SingularityMouseLeftButtonPressed(mousePosition, singularity)) {
         SingularityResize(singularity, size);
     }
-    BigBangExplosion(singularity, deltaTime);
+}
+
+void renderDust() {
+    float deltaTime = GetFrameTime();
+
+    dustPool.UpdateDraw(deltaTime);
 }

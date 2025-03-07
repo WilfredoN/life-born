@@ -20,23 +20,6 @@ void Particle::Draw() const {
     DrawRectangle(position.x, position.y, 5, 5, color);
 }
 
-Dust::Dust(Vector2 position,
-           float mass,
-           float speed,
-           float temperature,
-           Color color,
-           bool isActive) :
-    Particle(position, mass, speed, temperature, color, isActive) {
-}
-
-void Dust::Update(float deltaTime) {
-    (void)deltaTime;
-}
-
-void Dust::Draw() const {
-    DrawRectangle(position.x, position.y, 5, 5, color);
-}
-
 CelestialBody::CelestialBody(Vector2 position,
                              float mass,
                              float speed,

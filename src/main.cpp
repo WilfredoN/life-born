@@ -27,12 +27,16 @@ int main() {
         if (singularity.GetIsActive()) {
             renderSingularity(singularity);
         }
+        BigBangExplosion(singularity, deltaTime);
 
         BeginDrawing();
         ClearBackground(BLACK);
 
         if (singularity.GetIsActive()) {
             singularity.Draw();
+        }
+        else {
+            renderDust();
         }
 
         EndDrawing();

@@ -71,20 +71,6 @@ class Particle {
     bool isActive;
 };
 
-class Dust : public Particle {
-  public:
-    Dust(Vector2 position,
-         float mass,
-         float speed,
-         float temperature,
-         Color color,
-         bool isActive);
-
-    void Update(float deltaTime) override;
-
-    void Draw() const override;
-};
-
 class CelestialBody : public Particle {
   public:
     CelestialBody(Vector2 position,
@@ -186,7 +172,7 @@ class Singularity : public CelestialBody {
 
     void Draw() const override;
 
-    // virtual void Big_Bang();
+    void Big_Bang(Singularity &singularity);
 
     float GetEventHorizonRadius() const {
         return eventHorizonRadius;

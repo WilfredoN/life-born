@@ -3,7 +3,9 @@
 #include "raylib.h"
 #include <entity.h>
 #include <event_handler.h>
-
-#define SINGULARITY_DUST_COUNT 100
+#include <dust.h>
+#include <dust_pool.h>
+#include <vector>
 
 void renderSingularity(Singularity &singularity);
+void renderDust();

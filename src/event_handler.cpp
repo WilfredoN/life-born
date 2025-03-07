@@ -1,4 +1,5 @@
 #include <event_handler.h>
+#include <render.h>
 
 static bool is_big_bang = false;
 static bool is_pulse = true;
@@ -57,7 +58,10 @@ void BigBangExplosion(Singularity &singularity, float deltaTime) {
         if (bang_timer >= BANG_DURATION) {
             is_big_bang = false;
             singularity.SetIsActive(false);
-            // singularity.Big_Bang();
+
+            Vector2 center = singularity.GetPosition();
+            float radius = singularity.GetRadius();
+            dustPool.CreateExplosion(center, radius);
         }
     }
 }
