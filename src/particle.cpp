@@ -6,9 +6,10 @@ Particle::Particle(Vector2 position,
                    float mass,
                    float speed,
                    float temperature,
-                   Color color) :
+                   Color color,
+                   bool isActive) :
     position(position), mass(mass), speed(speed), temperature(temperature),
-    color(color) {
+    color(color), isActive(isActive) {
 }
 
 void Particle::Update(float deltaTime) {
@@ -23,7 +24,9 @@ Dust::Dust(Vector2 position,
            float mass,
            float speed,
            float temperature,
-           Color color) : Particle(position, mass, speed, temperature, color) {
+           Color color,
+           bool isActive) :
+    Particle(position, mass, speed, temperature, color, isActive) {
 }
 
 void Dust::Update(float deltaTime) {
@@ -39,10 +42,11 @@ CelestialBody::CelestialBody(Vector2 position,
                              float speed,
                              float temperature,
                              Color color,
+                             bool isActive,
                              float radius,
                              float gravity) :
-    Particle(position, mass, speed, temperature, color), radius(radius),
-    gravity(gravity) {
+    Particle(position, mass, speed, temperature, color, isActive),
+    radius(radius), gravity(gravity) {
 }
 
 void CelestialBody::Update(float deltaTime) {
@@ -58,10 +62,18 @@ Planet::Planet(Vector2 position,
                float speed,
                float temperature,
                Color color,
+               bool isActive,
                float radius,
                float gravity,
                float atmosphere) :
-    CelestialBody(position, mass, speed, temperature, color, radius, gravity),
+    CelestialBody(position,
+                  mass,
+                  speed,
+                  temperature,
+                  color,
+                  isActive,
+                  radius,
+                  gravity),
     atmosphere(atmosphere) {
 }
 
@@ -78,9 +90,17 @@ Star::Star(Vector2 position,
            float speed,
            float temperature,
            Color color,
+           bool isActive,
            float radius,
            float luminosity) :
-    CelestialBody(position, mass, speed, temperature, color, radius, 0.0f),
+    CelestialBody(position,
+                  mass,
+                  speed,
+                  temperature,
+                  color,
+                  isActive,
+                  radius,
+                  0.0f),
     luminosity(luminosity) {
 }
 
@@ -97,13 +117,20 @@ Singularity::Singularity(Vector2 position,
                          float speed,
                          float temperature,
                          Color color,
+                         bool isActive,
                          float radius,
                          float gravity,
                          float eventHorizonRadius,
-                         float spin,
-                         bool isActive) :
-    CelestialBody(position, mass, speed, temperature, color, radius, gravity),
-    eventHorizonRadius(eventHorizonRadius), spin(spin), isActive(isActive) {
+                         float spin) :
+    CelestialBody(position,
+                  mass,
+                  speed,
+                  temperature,
+                  color,
+                  isActive,
+                  radius,
+                  gravity),
+    eventHorizonRadius(eventHorizonRadius), spin(spin) {
 }
 
 void Singularity::Update(float deltaTime) {

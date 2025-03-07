@@ -10,7 +10,8 @@ class Particle {
              float mass,
              float speed,
              float temperature,
-             Color color);
+             Color color,
+             bool isActive);
 
     virtual ~Particle() = default;
     virtual void Update(float deltaTime);
@@ -31,6 +32,17 @@ class Particle {
     Color GetColor() const {
         return color;
     }
+    bool GetIsActive() const {
+        return isActive;
+    }
+
+    float GetOpacity(Color color) const {
+        return color.a;
+    }
+
+    void SetIsActive(bool newIsActive) {
+        isActive = newIsActive;
+    }
 
     void SetPosition(Vector2 newPosition) {
         position = newPosition;
@@ -47,12 +59,16 @@ class Particle {
     void SetColor(Color newColor) {
         color = newColor;
     }
+    void setOpacity(Color &color, float newOpacity) {
+        color.a = static_cast<unsigned char>(newOpacity);
+    }
   protected:
     Vector2 position;
     float mass;
     float speed;
     float temperature;
     Color color;
+    bool isActive;
 };
 
 class Dust : public Particle {
@@ -61,7 +77,8 @@ class Dust : public Particle {
          float mass,
          float speed,
          float temperature,
-         Color color);
+         Color color,
+         bool isActive);
 
     void Update(float deltaTime) override;
 
@@ -75,6 +92,7 @@ class CelestialBody : public Particle {
                   float speed,
                   float temperature,
                   Color color,
+                  bool isActive,
                   float radius,
                   float gravity);
 
@@ -107,6 +125,7 @@ class Planet : public CelestialBody {
            float speed,
            float temperature,
            Color color,
+           bool isActive,
            float radius,
            float gravity,
            float atmosphere);
@@ -132,6 +151,7 @@ class Star : public CelestialBody {
          float speed,
          float temperature,
          Color color,
+         bool isActive,
          float radius,
          float luminosity);
 
@@ -156,15 +176,17 @@ class Singularity : public CelestialBody {
                 float speed,
                 float temperature,
                 Color color,
+                bool isActive,
                 float radius,
                 float gravity,
                 float eventHorizonRadius,
-                float spin,
-                bool isActive);
+                float spin);
 
     void Update(float deltaTime) override;
 
     void Draw() const override;
+
+    // virtual void Big_Bang();
 
     float GetEventHorizonRadius() const {
         return eventHorizonRadius;
@@ -178,14 +200,7 @@ class Singularity : public CelestialBody {
     void SetSpin(float newSpin) {
         spin = newSpin;
     }
-    bool GetIsActive() const {
-        return isActive;
-    }
-    void SetIsActive(bool newIsActive) {
-        isActive = newIsActive;
-    }
   private:
     float eventHorizonRadius;
     float spin;
-    bool isActive;
 };

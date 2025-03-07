@@ -45,12 +45,19 @@ void BigBangExplosion(Singularity &singularity, float deltaTime) {
         }
 
         singularity.SetRadius(newRadius);
+        float newOpacity = singularity.GetOpacity(singularity.GetColor()) -
+                           (deltaTime / BANG_EFFECT);
+        newOpacity = fmaxf(newOpacity, 0.0f);
+
+        Color color = singularity.GetColor();
+        singularity.setOpacity(color, newOpacity);
+        singularity.SetColor(color);
         bang_timer += deltaTime;
 
         if (bang_timer >= BANG_DURATION) {
             is_big_bang = false;
             singularity.SetIsActive(false);
-            // todo: spawn dust particles
+            // singularity.Big_Bang();
         }
     }
 }

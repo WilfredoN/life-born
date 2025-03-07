@@ -15,11 +15,11 @@ int main() {
                             0.0f,
                             100.0f,
                             WHITE,
+                            true,
                             50.0f,
                             10.0f,
                             75.0f,
-                            0.5f,
-                            true);
+                            0.5f);
 
     while (!WindowShouldClose()) {
         float deltaTime = GetFrameTime();
