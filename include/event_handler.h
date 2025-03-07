@@ -12,3 +12,4 @@ bool SingularityMouseLeftButtonPressed(Vector2 mousePosition,
                                        Singularity &singularity);
 void SingularityResize(Singularity &singularity, float size);
 void BigBangExplosion(Singularity &singularity, float deltaTime);
+bool IsBigBangActive();
